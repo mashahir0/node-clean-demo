@@ -3,8 +3,11 @@ import { IUserModel } from "../models/user.model";
 
 
 export const UserSchema = new Schema<IUserModel>({
-    name: String,
-    email: String,
+    name: {type :String , required : true },
+    email: {type : String, required: true},
+    password : {type : String , required : true },
+    role : {type : String , enum:["user" , "admin"], default : "user"}
+
 },
 {timestamps : true}
 )

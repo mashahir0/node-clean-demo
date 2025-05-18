@@ -7,4 +7,4 @@ export interface IUserModel extends Omit<IUserEntity , "id">,Document{
     _id:ObjectId
 }
 
-export const userModel = model<IUserModel>('users',UserSchema)
+export const UserModel = model<IUserModel>('users',UserSchema)
