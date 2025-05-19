@@ -13,6 +13,7 @@ export class AdminLoginstrategy implements ILoginStrategy{
         @inject("IPasswordBcrypt") private passwordBcrypt : IBcrypt
     ){}
     async login(user: LoginUserDto): Promise<Partial<IUserEntity>> {
+        console.log('admin strategy')
         const admin = await this.userRepository.findByEmail(user.email)
         if(!admin) throw new Error("admin not found")
         if(admin.role !== "admin") throw new Error("invalid Role")

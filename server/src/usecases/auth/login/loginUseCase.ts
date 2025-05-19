@@ -18,7 +18,7 @@ export class LoginUseCase implements ILoginUseCase{
     }
 
     async exicute(user: LoginUserDto): Promise<Partial<IUserEntity>> {
-
+        console.log(user.role)
         const strategy  =  this.strategies[user.role]
         if(!strategy) throw new Error("invalid")
         return await strategy.login(user)

@@ -12,6 +12,7 @@ export class UserLoginStrategy implements ILoginStrategy{
         @inject("IPasswordBcrypt") private passwordBcrypt : IBcrypt
     ){}
     async login(user: LoginUserDto): Promise<Partial<IUserEntity>> {
+        console.log("usr login strategy")
         const client = await this.userRepoisory.findByEmail(user.email)
         if(!client) throw new Error("user not found")
         if(client.password){
