@@ -15,4 +15,9 @@ export class UserRepository implements IUserRepository{
         return await newUser.save()
     }
 
+    async getAllUsers(): Promise<{users : IUserEntity[] | []; total : number}>{
+        const users = await UserModel.find({role : "user"}).select("name email role").exec()
+        return {users , total : users.length}
+    }
+
 }
